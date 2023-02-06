@@ -13,10 +13,20 @@ function getCommentsByPostId(postId) {
 
 function updateCommentBody(id, body) {
   //update comment body
+  comments = comments.map((comments) => {
+    if (comment.id == id) {
+      return {
+        ...comment,
+        ...body,
+      };
+    }
+    return comment;
+  });
 }
 
 function deleteCommentById(id) {
   //delete comment by id
+  return comments.filter((comment) => comment.id !== id);
 }
 
 function addComment(comment) {

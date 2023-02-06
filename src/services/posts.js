@@ -5,14 +5,17 @@ let posts = [...data];
 
 function getPosts() {
   //get all posts
+  return [...posts];
 }
 
 function getPostsByUser(userId) {
   //get all posts by userId
+  return [...posts.find((post) => post.id === id)];
 }
 
 function getPostById(id) {
   //get a single post by id
+  return posts.find((post) => post.id === id);
 }
 
 function addPost(post) {
@@ -22,10 +25,28 @@ function addPost(post) {
 
 function updatePostTitle(id, title) {
   //update post title
+  posts = posts.map((post) => {
+    if (post.id === id) {
+      return {
+        ...post,
+        ...title,
+      };
+    }
+    return title;
+  });
 }
 
 function updatePostBody(id, body) {
   //update post body
+  posts = posts.map((post) => {
+    if (post.id === id) {
+      return {
+        ...post,
+        ...body,
+      };
+    }
+    return body;
+  });
 }
 
 function updatePost(id, post) {
@@ -34,6 +55,7 @@ function updatePost(id, post) {
 
 function deletePostBy(id) {
   //delete post by id
+  return posts.filter((post) => post.id !== id);
 }
 
 function deletePostsByUserId(userId) {
